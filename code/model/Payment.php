@@ -347,6 +347,15 @@ final class Payment extends DataObject implements PermissionProvider
     }
 
     /**
+     * @param null $member
+     * @return bool|int
+     */
+    public function canView($member = null)
+    {
+        return Permission::check('CMS_ACCESS_XtmPaymentAdmin', 'any', $member);
+    }
+
+    /**
      * Whether or not this payment can be captured
      * @param Member|int $member the member/memberID to check permissions on
      * @param boolean $partial check if payment can be partially captured. Defaults to false
